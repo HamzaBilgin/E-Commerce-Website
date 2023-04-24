@@ -1,0 +1,140 @@
+/* Base CSS */
+/* headNavbar */
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.genelNavbar {
+	border-bottom: 1px solid black;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+}
+
+.headNavbar {
+	display: flex;
+	height: 50px;
+	background-color: rgb(94, 90, 90, 0.3);
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.headNavbar ul li {
+	display: inline;
+	padding-left: 10px;
+	margin: 15px;
+}
+
+/* SecondNavbar */
+.secondNavbar {
+	display: flex;
+	height: 200px;
+	width: 100%;
+}
+
+/* solSecondNavbar -- logo tasarımı */
+.secondNavbar .solSecondNavbar {
+	 justify-content: center;
+	height: 100%;
+	width: 25%;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.secondNavbar .solSecondNavbar .solLogoLink{
+
+    height: 100%;
+    width: 25%;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.secondNavbar .solSecondNavbar .logo {
+	display: flex;
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	background-color: black;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	left: 50%;
+	transform: translate(-50%);
+	border-radius: 100px;
+}
+
+/* SecondNavbar da orta kısım tasarımı */
+.secondNavbar .ortaSecondNavbar {
+	height: 100%;
+	width: 50%;
+}
+
+.secondNavbar .ortaSecondNavbar .navbarSearch {
+	height: 50%;
+}
+
+.secondNavbar .ortaSecondNavbar .navbarUrunler {
+	height: 50%;
+	align-items: center;
+	justify-content: center;
+}
+
+.secondNavbar .ortaSecondNavbar .navbarUrunler .element {
+	background-color: rgba(43, 35, 35, 0.515);
+	padding: 12px;
+	margin: 0 10px;
+	display: flex;
+	align-items: center;
+	border-radius: 6px;
+	transition: 0.4s;
+	height: 30px;
+}
+
+.secondNavbar .ortaSecondNavbar .navbarUrunler a {
+	text-decoration: none;
+	font-size: larger;
+	letter-spacing: 1px;
+	transition: 0.3s;
+	color: white;
+}
+
+.secondNavbar .ortaSecondNavbar .navbarUrunler .element:hover {
+	transform: scale(1.2);
+	background-color: black;
+	z-index: 1;
+	border: 1px solid #ccc;
+}
+
+/* SecondNavbar da sag kısım tasarımı */
+.secondNavbar .sagSecondNavbar {
+	width: 25%;
+	margin-top: 25px;
+	justify-content: center;
+}
+
+.secondNavbar .sagSecondNavbar .btn {
+	background-color: rgba(43, 35, 35, 0.515);
+	margin-left: 20px;
+	display: flex;
+}
+
+.sagSecondNavbar .sepet .sepet_count{
+	width: 24px;
+  height: 24px;
+	background-color: red;
+	color: white;
+  font-size: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}

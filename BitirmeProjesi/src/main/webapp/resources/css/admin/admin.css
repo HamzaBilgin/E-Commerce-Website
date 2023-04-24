@@ -1,0 +1,103 @@
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Alanı BAşlangıcı*/
+.adminNavbar {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.adminNavbar span {
+    padding: 20px;
+    color: white;
+}
+
+.adminNavbar a {
+    font-weight: bold;
+    color: white;
+}
+
+.adminNavbar span a:hover {
+    font-size: 120%;
+    transition: 0.5s;
+}
+
+/* Navbar Alanı Sonu*/
+
+
+/* Content alanı baslangıcı */
+
+/* content Menü Alanı baslangıcı*/
+
+.content {
+    box-sizing: border-box;
+    display: flex;
+    height: 660px;
+}
+
+.content_Menu {
+    padding: 20px;
+    display: flex;
+    height: 100%;
+    width: 25%;
+    margin-top: 40px;
+    position: relative;
+}
+
+.content_Menu .icerik_Listesi {
+    position: absolute;
+    width: 70%;
+    text-align: center;
+}
+
+.content_Menu .icerik_Listesi span {
+    display: block;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.content_Menu .icerik_Listesi .islem {
+    cursor: pointer;
+}
+
+.content_Menu .icerik_Listesi .islem:hover {
+    background-color: red;
+    color: white;
+    font-size: large;
+}
+.form_urunislem_buton {
+    display: flex;
+    margin: 15px;
+    padding: 12px;
+  
+    justify-content: right;
+}
+
+.form_urunislem_buton .btn {
+    margin: 15px;
+    padding: 12px;
+}
+
+.form_urunislem_buton .btn:hover {
+    transform: scale(1.2);
+    z-index: 1s;
+    border: 1px solid #ccc;
+    background-color: red;
+
+}
+/* content Menü Alanı sonu */
+/* content İçerik Alanı sonu */
+.content_Icerik {
+    margin-top: 40px;
+    height: 100%;
+    width: 75%;
+}
+

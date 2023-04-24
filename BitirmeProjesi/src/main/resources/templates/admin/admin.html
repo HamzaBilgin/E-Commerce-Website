@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../../../bootstrap-5.2.1-dist/css/bootstrap.min.css">
+	
+<!-- CSS ALANI -->
+<link rel="stylesheet" href="../../../resources/css/admin/admin.css">
+
+
+<title>Admin Anasayfa</title>
+
+
+</head>
+
+<body>
+	<!-- Admin Taslak İçerik Baslangıcı-->
+	<div class="adminNavbar">
+		<span>ADMİN ÜRÜN KAYDETME VE SİLME EKRANI</span> <span>ANASAYFAYA
+			DÖNMEK VE ÇIKIŞ YAPMAK İÇİN <a href="/logout">TIKLAYINIZ</a>
+		</span>
+	</div>
+
+
+	<div class="content">
+		<div class="content_Menu">
+			<div class="icerik_Listesi">
+				<span>İslem Menusu</span> <span class="islem urunKayıtİslem"
+					id="urunKayıtİslem"><a href="/admin/urunkaydet">Ürün Kayıt İşlemleri</a></span> 
+					<span class="islem urunListDüzeltmeİslem"><a href="/admin/urunBilgileri">Ürün Listesi ve Düzeltmeleri</a></span> 
+					<span class="islem kullanıcıBilgiIslem"><a href="/admin/kullaniciBilgileri">Kullanıcı Bilgileri</a></span>
+			</div>
+		</div>
+		<!-- Admin Taslak İçerik Sonu-->
+		
+		
+		<div class="content_Icerik" id="content_Icerik">
+		<!-- İçeri değişecek Alan-->
+		</div>
+
+		</div>
+
+
+	<script src="../../../resources/jquery-3.4.1.min.js"></script>
+	
+  
+	<script src="../../../bootstrap-5.2.1-dist/js/bootstrap.bundle.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+.table{
+    width: 75%;
+    box-sizing: border-box;
+    text-align: center;
+   
+}
+td{
+    height: 60px;
+}
+td img{
+    height: 100%;
+}

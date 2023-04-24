@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="../../../bootstrap-5.2.1-dist/css/bootstrap.min.css">
+
+
+<!-- CSS ALANI -->
+<link rel="stylesheet" href="../../../resources/css/navbar/Navbar.css">
+<link rel="stylesheet" href="../../../resources/css/index/indexUrunlar.css">
+
+
+<title>HBAlısveris Anasayfa</title>
+
+
+</head>
+
+<body>
+	<!-- GENEL NAVBAR BASLANGIXI BASLANGICI -->
+	<div class="genelNavbar">
+		<!-- HEADNAVBAR BASLANGICI -->
+		<div class="headNavbar">
+
+			<ul class="nav justify-content-center">
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li> HAMZA</li>
+			</ul>
+		</div>
+		<!-- HEADNAVBAR SONU -->
+		<!-- ALTNAVBAR ___ SECONDNAVBAR BASLANGICI-->
+		<div class="secondNavbar">
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SOL BASLANGIC -->
+			 <div class="solSecondNavbar"> <a class="solLogoLink" href="/index" >
+                    <div class="logo h4 fst-italic text-center">
+                        HB SHOPPİNG
+                    </div>
+                </a>
+
+            </div>
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SOL SON -->
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA KISMI BASLANGICI-->
+			<div class="ortaSecondNavbar">
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ÜST ARAMA KISMI BAŞLANGICI-->
+				<div class="navbarSearch position-relative">
+					<div
+						class="position-absolute  top-50 start-50 text-white text-center translate-middle">
+						<nav class="navbar ">
+							<div class="container-fluid">
+								<form class="d-flex" role="search">
+									<input class="form-control me-2" type="search"
+										placeholder="Search" aria-label="Search" style="width: 400px;">
+									<button class="btn btn-outline-success" type="submit">Search</button>
+								</form>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ÜST ARAMA KISMI SONU-->
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ALT URUN LİNKLER KISMI BASLANGICI -->
+				<div class="navbarUrunler d-flex ">
+					<div class="col-lg-6  d-flex"
+						style="justify-content: center; align-items: center;">
+						<div class="element">
+
+							<a href="#index_telefon">TELEFON</a>
+						</div>
+						<div class="element">
+							<a href="#index_laptop">LAPTOP</a>
+						</div>
+						<div class="element">
+							<a href="#index_televizyon">TELEVİZYON</a>
+						</div>
+					</div>
+				</div>
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ALT URUN LİNKLER KISMI SONU -->
+
+			</div>
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA KISMI SONU-->
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SAG KISMI BASLANGICI-->
+			<div class="sagSecondNavbar d-flex">
+				<div class="sagLink d-flex position-relative">
+					<div class="dropdown ">
+
+						<a class="btn btn-secondary dropdown-toggle " href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Giriş Yap </a>
+
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/giris">Kullanıcı
+									Girisi</a></li>
+							<li><a class="dropdown-item" href="/admin">Admin Girisi</a></li>
+
+						</ul>
+
+
+					</div>
+					<div>
+						<a class="btn btn-secondary" href="/kayit">Kayıt Ol</a>
+					</div>
+					<div>
+						<a class="btn btn-secondary sepet" href="/sepet">Sepetim<span
+							class="sepet_count">0</span></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ALTNAVBAR ___ SECONDNAVBAR--- SAG KISMI SONU-->
+
+	</div>
+	<!-- Genel Navbar SONU-->
+	<!-- Ürün Card Kısımları Başlangıcı -->
+	<div class="index_cads_ana">
+
+		<h2 class="baslık " id="index_telefon">TELEFON</h2>
+		<div class="index_cards" id="index_cards_telefon"></div>
+		<!-- Laptoplar -->
+		<h2 class="baslık " id="index_laptop">LAPTOP</h2>
+		<div class="index_cards" id="index_cards_laptop"></div>
+
+		<!-- Televizyonlar -->
+
+		<h2 class="baslık " id="index_televizyon">TELEVİZYON</h2>
+		<div class="index_cards" id="index_cards_televizyon"></div>
+	</div>
+
+
+
+	<a href="#yukari" id="yukari" title="Yukarı Çık"></a>
+	
+	
+	<script src="../../../resources/jquery-3.4.1.min.js"></script>
+	
+	
+	<script>
+	
+	//ürünleri db den çekiyor
+	async function getUrun() {
+	var settings = {
+			  "url": "http://localhost:8082/rest/urun/list",
+			  "method": "GET",
+			  "timeout": 0,
+			};
+
+			$.ajax(settings).done(function (urun) {
+			  console.log('urun',urun);
+			  urun ? localStorage.setItem("urunler", JSON.stringify(urun)) : [];
+			    urunlerFunc(urun);
+			});
+		} 
+	let urunler = [];
+	let cart = [];
+
+	getUrun();
+	
+	// Sepet ürün sayısı başlangıcı
+	const cartItems = document.querySelector(".sepet_count");
+
+    cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+    cartItems.innerHTML = localStorage.getItem("cart") ?
+        JSON.parse(localStorage.getItem("cart")).length : "0";
+     // Sepet ürün sayısı sonu
+	// Card kısımların için ürünlerin türüne göre localStorage dan geçip yerleştiriyor
+	    function urunlerFunc(urun) {
+	        
+	        urunler = JSON.parse(localStorage.getItem("urunler"))
+	            ? JSON.parse(localStorage.getItem("urunler")) : [];
+	     
+	        const urunlerContainer = document.getElementById("index_cards_telefon");
+	        const urunlerContainerl = document.getElementById("index_cards_laptop");
+	        const urunlerContainert = document.getElementById("index_cards_televizyon");
+	        let results = "";
+	        let resultsl ="";
+	        let resultst ="";
+	        urunler.forEach((item) => {
+	            
+	            if(item.uruntipi == "telefon"){
+	                console.log("tel" ,item.uruntipi);
+	                results += `
+	            <div class="index_ürünler">
+	            <div>
+	                <div class="index_ürünler_img">
+
+	                    <img alt="Resim Yüklenemedi" src=data:image/jpeg;base64,${item.urunresim}>
+
+	                </div>
+	                <div class="index_ürünler_text">
+
+	                    <p>${item.urunaciklama}</p>
+
+	                    <h2>${item.urunfiyat}</h2>
+	                </div>
+	            </div>
+	            <div>
+	                    <div class="index_ürünler_sepeteEkle">
+	                        <div>
+	                        <a href="#" class="index_ürünler_sepeteEkle1" data-id=${item.urunId}>
+	                            Sepete Ekle
+	                            </a>
+	                        </div>
+	                    </div>
+	        
+	                </div>
+
+
+	            </div>
+	             `;
+	            urunlerContainer.innerHTML = results;
+	            }
+	           if(item.uruntipi == "laptop"){
+	                console.log("laptop" ,item.uruntipi);
+	                resultsl += `
+	            <div class="index_ürünler">
+	            <div>
+	                <div class="index_ürünler_img">
+
+	                    <img alt="Resim Yüklenemedi" src=data:image/jpeg;base64,${item.urunresim}>
+
+	                </div>
+	                <div class="index_ürünler_text">
+
+	                    <p>${item.urunaciklama}</p>
+
+	                    <h2>${item.urunfiyat}</h2>
+	                </div>
+	            </div>
+	            <div>
+	                    <div class="index_ürünler_sepeteEkle">
+	                        <div>
+	                        <a href="#" class="index_ürünler_sepeteEkle1" data-id=${item.urunId}>
+	                            Sepete Ekle
+	                            </a>
+	                        </div>
+	                    </div>
+	        
+	                </div>
+
+
+	            </div>
+	             `;
+	           
+	            }
+	            if(item.uruntipi == "televizyon"){
+	                console.log("televizyon" ,item.uruntipi);
+	                resultst += `
+	            <div class="index_ürünler">
+	            <div>
+	                <div class="index_ürünler_img">
+
+	                    <img alt="Resim Yüklenemedi" src=data:image/jpeg;base64,${item.urunresim}>
+
+	                </div>
+	                <div class="index_ürünler_text">
+
+	                    <p>${item.urunaciklama}</p>
+
+	                    <h2>${item.urunfiyat}</h2>
+	                </div>
+	            </div>
+	            <div>
+	                    <div class="index_ürünler_sepeteEkle">
+	                        <div>
+	                        <a href="#" class="index_ürünler_sepeteEkle1" data-id=${item.urunId}>
+	                            Sepete Ekle
+	                            </a>
+	                        </div>
+	                    </div>
+	        
+	                </div>
+
+
+	            </div>
+	             `;
+	           
+	            }
+
+	            urunlerContainer.innerHTML = results;
+	            urunlerContainerl.innerHTML = resultsl;
+	            urunlerContainert.innerHTML = resultst;
+	            sepeteEkle();
+	        });
+
+
+	    }
+     //Sepete Ekliyor
+	function sepeteEkle() {
+	    
+	    const buttons = [...document.getElementsByClassName("index_ürünler_sepeteEkle1")];
+	   
+	    buttons.forEach(element => {
+	        const inCart = cart.find((item) => item.urunId === Number(element.dataset.id));
+	        element.addEventListener("click", function (e) {
+	            e.preventDefault();
+	            const id = e.target.dataset.id;
+	            const urunBul = urunler.find((urun) => urun.urunId === Number(id));
+	           cart.push({...urunBul,quantity : 1});
+	            localStorage.setItem("cart", JSON.stringify(cart));
+	            cartItems.innerHTML = cart.length;
+	        });
+	       /*disable
+	        console.log(inCart);
+	        if(inCart){
+	            element.setAttribute("disabled","disabled");
+	            
+	        }
+	        else{
+	            element.addEventListener("click", function (e) {
+	                e.preventDefault();
+	                const id = e.target.dataset.id;
+	                const urunBul = urunler.find((urun) => urun.urunId === Number(id));
+	               cart.push({...urunBul,quantity : 1});
+	                localStorage.setItem("cart", JSON.stringify(cart));
+	                element.setAttribute("disabled","disabled");
+	            });
+	        }
+	        */
+	        
+	    });
+
+	}
+
+	
+	</script>
+
+
+	<script src="../../../bootstrap-5.2.1-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

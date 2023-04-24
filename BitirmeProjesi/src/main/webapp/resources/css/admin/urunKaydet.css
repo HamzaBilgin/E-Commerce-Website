@@ -1,0 +1,14 @@
+.content_Icerik {
+    margin-top: 40px;
+    height: 100%;
+    width: 75%;
+}
+
+.ürünForm {
+    width: 50%;
+}
+
+.mb-3 textarea {
+    height: 150px;
+    resize: none;
+}

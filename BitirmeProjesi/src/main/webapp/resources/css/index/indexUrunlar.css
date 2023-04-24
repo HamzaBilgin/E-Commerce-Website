@@ -1,0 +1,56 @@
+.index_ürünler {
+	border-radius: 10px;
+	width: 15rem;
+	border: 1px solid red;
+	align-items: center;
+	text-align: center;
+	margin: 15px;
+	padding: 3px;
+}
+
+.index_ürünler img {
+	height: 250px;
+	width: 100%;
+}
+
+.index_ürünler_sepeteEkle a {
+	display: inline-block;
+	width: 100%;
+	background-color: red;
+	border-radius: 10px;
+	color: white;
+	text-decoration: none;
+}
+
+.baslık {
+	border-left: 8px solid blue;
+	margin-left: 8rem;
+	margin-top: 10px;
+	padding: 40px;
+	transition: 1s;
+	
+}
+
+.index_cards {
+	
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+
+.baslık:hover {
+	padding-left: 60px;
+}
+
+.index_ürünler:hover {
+	transform: scale(1.03);
+	transition: 0.5s;
+	box-shadow: 10px 0px 3px grey;
+	
+}
+
+.index_ürünler .index_ürünler_sepeteEkle a:hover {
+	color: black;
+	
+}

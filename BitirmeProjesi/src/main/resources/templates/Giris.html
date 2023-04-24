@@ -1,0 +1,350 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="../../../bootstrap-5.2.1-dist/css/bootstrap.min.css">
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="../../../resources/css/navbar/Navbar.css">
+<link rel="stylesheet" href="../../../resources/css/giris/giris.css">
+
+
+
+<title>Kullanıcı Girisi</title>
+
+</head>
+<body style="height: 1500px;">
+
+	<!-- GENEL NAVBAR BASLANGIXI BASLANGICI -->
+	<div class="genelNavbar">
+
+		<!-- HEADNAVBAR BASLANGICI -->
+		<div class="headNavbar">
+			<ul class="nav justify-content-center">
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+				<li>HAMZA</li>
+			</ul>
+		</div>
+		<!-- HEADNAVBAR SONU -->
+
+		<!-- ALTNAVBAR ___ SECONDNAVBAR BASLANGICI-->
+		<div class="secondNavbar">
+
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SOL BASLANGIC -->
+			<div class="solSecondNavbar">
+				<a class="solLogoLink" href="/index">
+					<div class="logo h4 fst-italic text-center">HB SHOPPİNG</div>
+				</a>
+
+			</div>
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SOL SON -->
+
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA KISMI BASLANGICI-->
+			<div class="ortaSecondNavbar">
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ÜST ARAMA KISMI BAŞLANGICI-->
+				<div class="navbarSearch position-relative">
+					<div
+						class="position-absolute  top-50 start-50 text-white text-center translate-middle">
+						<nav class="navbar ">
+							<div class="container-fluid">
+								<form class="d-flex" role="search">
+									<input class="form-control me-2" type="search"
+										placeholder="Search" aria-label="Search" style="width: 400px;">
+									<button class="btn btn-outline-success" type="submit">Search</button>
+								</form>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ÜST ARAMA KISMI SONU-->
+
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ALT URUN LİNKLER KISMI BASLANGICI -->
+				<div class="navbarUrunler d-flex ">
+					<div class="col-lg-6  d-flex"
+						style="justify-content: center; align-items: center;">
+						<div class="element">
+
+							<a href="#index_telefon">TELEFON</a>
+						</div>
+						<div class="element">
+							<a href="#index_laptop">LAPTOP</a>
+						</div>
+						<div class="element">
+							<a href="#index_televizyon">TELEVİZYON</a>
+						</div>
+					</div>
+				</div>
+				<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA ALT URUN LİNKLER KISMI SONU -->
+
+			</div>
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- ORTA KISMI SONU-->
+
+			<!-- ALTNAVBAR ___ SECONDNAVBAR--- SAG KISMI BASLANGICI-->
+			<div class="sagSecondNavbar d-flex">
+				<div class="sagLink d-flex position-relative">
+					<div class="dropdown ">
+
+						<a class="btn btn-secondary dropdown-toggle " href="#"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Giriş Yap </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/giris">Kullanıcı
+									Girisi</a></li>
+							<li><a class="dropdown-item" href="/admin">Admin Girisi</a></li>
+						</ul>
+					</div>
+					<div>
+						<a class="btn btn-secondary" href="/kayit">Kayıt Ol</a>
+					</div>
+					<div>
+						<a class="btn btn-secondary sepet" href="/sepet">Sepetim<span
+							class="sepet_count">0</span></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ALTNAVBAR ___ SECONDNAVBAR--- SAG KISMI SONU-->
+
+	</div>
+	<!-- Genel Navbar SONU-->
+
+	<!-- Kullanici Giris Form Baslangıcı-->
+	<div class="container" id="girisFormu" style="margin-top: 20px">
+		<h4 class="text-center">GİRİS FORMU</h4>
+		<form th:action="@{/giris}" method="post" th:object="${kullanici}">
+			<!-- Form Bilgleri -->
+			<div class="form_kayıt_div">
+				<div class="form-group">
+					<label class="form-text" for="email">Mail Adresiniz</label> <input
+						type="email" id="email" class="form-control" name="email"
+						th:field="*{email}" placeholder="@gmail.com">
+				</div>
+				<div class="form-group">
+					<label class="form-text" for="sifre">Şifrenizi Yazınız</label> <input
+						class="form-control" type="sifre" id="sifre" name="sifre"
+						th:field="*{sifre}" placeholder="*****************">
+				</div>
+			</div>
+			<div class="form_buton">
+				<button type="reset" class="btn btn-primary">Yenile</button>
+				<button type="submit" class="btn btn-primary "
+					onclick="girisKontrol();">Giris</button>
+			</div>
+		</form>
+	</div>
+	<!-- Kullanici Giris Form Baslangıcı-->
+
+
+
+
+
+	<script type="text/javascript">
+	function formkontrol(){
+		alert("merhaba");
+	};
+	// Sepet ürün sayısı başlangıcı
+	const cartItems = document.querySelector(".sepet_count");
+
+    cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+    cartItems.innerHTML = localStorage.getItem("cart") ?
+        JSON.parse(localStorage.getItem("cart")).length : "0";
+     // Sepet ürün sayısı sonu
+	//Giriş Kontrolü
+	function girisKontrol(){
+		
+		email = document.getElementById('email').value; 
+		sifre = document.getElementById('sifre').value;
+		
+		encodeSifre = Base64.encode(sifre);
+		
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify({
+		  "deleted": false,
+		  "disabled": false,
+		  "email": email,
+		  "sifre": sifre
+		});
+
+		var requestOptions = {
+		  method: 'POST',
+		  headers: myHeaders,
+		  body: raw,
+		  redirect: 'follow'
+		};
+
+		fetch("http://localhost:8082/rest/kullanici/emailIleSifre", requestOptions)
+		  .then(response => response.text())
+		  .then(result => emailDön(result))
+		  .catch(error => olmayanKullanıcı());
+			
+		};
+		function emailDön(result){
+			const kullanici = JSON.parse(result);
+			if(kullanici.sifre == encodeSifre){
+				alert("GİRİŞ BAŞARILI");
+				kayitSayfaYönlendirme("http://localhost:8082/index");
+			}
+			else{
+				alert("Giris Bilgileri Yanlış");
+				kayitSayfaYönlendirme("http://localhost:8082/giris");
+			}
+		};
+		
+		function olmayanKullanıcı(){
+			
+			alert("Lütfen Kayıt Olunuz");
+		
+		};
+		//Giriş Kontrolü Sonu
+		//Kayit Ekran yönlendirmesi js baslangıcı
+		function kayitSayfaYönlendirme(url){
+			
+		 window.location.href=url;
+		
+		}
+		//Kayit Ekran yönlendirmesi js sonu
+		//Kriptolu sifre çözme başlangıcı
+		var Base64 = {
+
+			// private property
+			_keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+			// public method for encoding
+			encode: function (input) {
+				var output = "";
+				var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+				var i = 0;
+
+				input = Base64._utf8_encode(input);
+
+				while (i < input.length) {
+
+					chr1 = input.charCodeAt(i++);
+					chr2 = input.charCodeAt(i++);
+					chr3 = input.charCodeAt(i++);
+
+					enc1 = chr1 >> 2;
+					enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+					enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+					enc4 = chr3 & 63;
+
+					if (isNaN(chr2)) {
+						enc3 = enc4 = 64;
+					} else if (isNaN(chr3)) {
+						enc4 = 64;
+					}
+
+					output = output +
+						this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+						this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+				}
+				return output;
+			},
+
+			// public method for decoding
+			decode: function (input) {
+				var output = "";
+				var chr1, chr2, chr3;
+				var enc1, enc2, enc3, enc4;
+				var i = 0;
+
+				input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+				while (i < input.length) {
+
+					enc1 = this._keyStr.indexOf(input.charAt(i++));
+					enc2 = this._keyStr.indexOf(input.charAt(i++));
+					enc3 = this._keyStr.indexOf(input.charAt(i++));
+					enc4 = this._keyStr.indexOf(input.charAt(i++));
+
+					chr1 = (enc1 << 2) | (enc2 >> 4);
+					chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+					chr3 = ((enc3 & 3) << 6) | enc4;
+
+					output = output + String.fromCharCode(chr1);
+
+					if (enc3 != 64) {
+						output = output + String.fromCharCode(chr2);
+					}
+					if (enc4 != 64) {
+						output = output + String.fromCharCode(chr3);
+					}
+				}
+
+				output = Base64._utf8_decode(output);
+
+				return output;
+			},
+
+			// private method for UTF-8 encoding
+			_utf8_encode: function (string) {
+				string = string.replace(/\r\n/g, "\n");
+				var utftext = "";
+
+				for (var n = 0; n < string.length; n++) {
+
+					var c = string.charCodeAt(n);
+
+					if (c < 128) {
+						utftext += String.fromCharCode(c);
+					} else if ((c > 127) && (c < 2048)) {
+						utftext += String.fromCharCode((c >> 6) | 192);
+						utftext += String.fromCharCode((c & 63) | 128);
+					} else {
+						utftext += String.fromCharCode((c >> 12) | 224);
+						utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+						utftext += String.fromCharCode((c & 63) | 128);
+					}
+				}
+				return utftext;
+			},
+
+			// private method for UTF-8 decoding
+			_utf8_decode: function (utftext) {
+				var string = "";
+				var i = 0;
+				var c = c1 = c2 = 0;
+
+				while (i < utftext.length) {
+
+					c = utftext.charCodeAt(i);
+
+					if (c < 128) {
+						string += String.fromCharCode(c);
+						i++;
+					} else if ((c > 191) && (c < 224)) {
+						c2 = utftext.charCodeAt(i + 1);
+						string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+						i += 2;
+					} else {
+						c2 = utftext.charCodeAt(i + 1);
+						c3 = utftext.charCodeAt(i + 2);
+						string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+						i += 3;
+					}
+				}
+				return string;
+			}
+		}
+		//Kriptolu sifre çözme sonu
+	
+	</script>
+
+	<script src="../../../bootstrap-5.2.1-dist/js/bootstrap.bundle.js"></script>
+
+
+
+</body>
+</html>

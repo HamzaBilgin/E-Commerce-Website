@@ -1,0 +1,31 @@
+#kullanıcıList{
+    width: 80%;
+}
+
+.kullanıcıListGövdeTr:hover{
+    background-color: aqua;
+}
+
+.kullanıcı_islem_buton {
+    width: 75%;
+    display: flex;
+    margin: 15px;
+    padding: 12px;
+  
+    justify-content: right;
+}
+
+.kullanıcı_islem_buton .btn {
+    width: 100px;
+    margin: 15px;
+    padding: 12px;
+}
+
+.kullanıcı_islem_buton .btn:hover {
+    transform: scale(1.2);
+    z-index: 1s;
+    border: 1px solid #ccc;
+    background-color: red;
+
+}
+

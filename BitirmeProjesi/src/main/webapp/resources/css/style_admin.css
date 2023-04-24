@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.no-border-pane-grid tr,
+.no-border-pane-grid td { 
+	border: none !important;
+}
+
+.secilmis_menu_item{
+	
+	background-color: lime!important;
+	
+}

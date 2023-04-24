@@ -1,0 +1,58 @@
+.container {
+    width: 80%;
+
+    text-align: center;
+    align-items: center;
+
+
+}
+
+form {
+    align-items: center;
+}
+
+.form_kayıt_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.form_sözlesme {
+    display: flex;
+    padding: 15px;
+    transition: 1s;
+    justify-content: space-around;
+
+
+}
+
+.form-group {
+
+    width: 25%;
+    text-align: center;
+    align-items: center;
+}
+
+.form_buton {
+    margin: 15px;
+    padding: 12px;
+}
+
+.form_buton .btn {
+    margin: 15px;
+    padding: 12px;
+}
+
+.form_buton .btn:hover {
+    transform: scale(1.2);
+    z-index: 1s;
+    border: 1px solid #ccc;
+    background-color: red;
+
+}
+
+h4 {
+    text-decoration: underline;
+}
